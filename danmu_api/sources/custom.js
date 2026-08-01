@@ -102,7 +102,7 @@ export default class CustomSource extends BaseSource {
             links.push({
               "name": epTitle,
               "url": ep.episodeId.toString(),
-              "title": `【custom】 ${epTitle}`
+              "title": `custom | ${epTitle}`
             });
           }
 
@@ -110,7 +110,7 @@ export default class CustomSource extends BaseSource {
             let transformedAnime = {
               animeId: anime.animeId,
               bangumiId: String(anime.bangumiId),
-              animeTitle: `${anime.animeTitle}(${new Date(anime.startDate).getFullYear()})【${anime.typeDescription}】from custom`,
+              animeTitle: `${anime.animeTitle}(${new Date(anime.startDate).getFullYear()}) | ${anime.typeDescription}`,
               type: anime.type,
               typeDescription: anime.typeDescription,
               imageUrl: anime.imageUrl,

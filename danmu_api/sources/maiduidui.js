@@ -241,7 +241,7 @@ class MaiduiduiSource extends BaseSource {
             links.push({
               "name": epTitle,
               "url": `https://www.mddcloud.com.cn/video/${anime.url}.html?uuid=${ep.episodeId}`,
-              "title": `【maiduidui】 ${epTitle}`
+              "title": `maiduidui | ${epTitle}`
             });
           }
 
@@ -249,7 +249,7 @@ class MaiduiduiSource extends BaseSource {
             let transformedAnime = {
               animeId: convertToAsciiSum(anime.url),
               bangumiId: anime.url,
-              animeTitle: `${anime.name}(${anime.year})【${anime.type}】from maiduidui`,
+              animeTitle: `${anime.name}(${anime.year}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.img,

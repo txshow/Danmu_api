@@ -356,7 +356,7 @@ export default class AiyifanSource extends BaseSource {
           const links = eps.map((ep, index) => ({
             name: ep.title || `${index + 1}`,
             url: ep.link,
-            title: `【aiyifan】 ${ep.title}`
+            title: `aiyifan | ${ep.title}`
           }));
 
           if (links.length === 0) return;
@@ -368,7 +368,7 @@ export default class AiyifanSource extends BaseSource {
           const transformedAnime = {
             animeId: numericAnimeId,
             bangumiId: anime.mediaId,
-            animeTitle: `${anime.title}(${anime.year || 'N/A'})【${anime.type}】from aiyifan`,
+            animeTitle: `${anime.title}(${anime.year || 'N/A'}) | ${anime.type}`,
             type: anime.type,
             typeDescription: anime.type,
             imageUrl: anime.imageUrl,

@@ -595,7 +595,7 @@ export default class TencentSource extends BaseSource {
             links.push({
               "name": (i + 1).toString(),
               "url": fullUrl,
-              "title": `【qq】 ${epTitle}`
+              "title": `qq | ${epTitle}`
             });
           }
 
@@ -615,7 +615,7 @@ export default class TencentSource extends BaseSource {
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${displayTitle}(${anime.year})【${anime.type}】from tencent`,
+              animeTitle: `${displayTitle}(${anime.year}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

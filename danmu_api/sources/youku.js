@@ -258,7 +258,7 @@ export default class YoukuSource extends BaseSource {
             links.push({
               "name": ep.episodeIndex.toString(),
               "url": fullUrl,
-              "title": `【youku】 ${ep.title}`
+              "title": `youku | ${ep.title}`
             });
           }
 
@@ -267,7 +267,7 @@ export default class YoukuSource extends BaseSource {
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || 'N/A'})【${anime.type}】from youku`,
+              animeTitle: `${anime.title}(${anime.year || 'N/A'}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

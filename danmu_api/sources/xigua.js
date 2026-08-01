@@ -229,7 +229,7 @@ class XiguaSource extends BaseSource {
             links.push({
               "name": epTitle,
               "url": ep.url,
-              "title": `【xigua】 ${epTitle}`
+              "title": `xigua | ${epTitle}`
             });
           }
 
@@ -237,7 +237,7 @@ class XiguaSource extends BaseSource {
             let transformedAnime = {
               animeId: convertToAsciiSum(albumId),
               bangumiId: String(albumId),
-              animeTitle: `${anime.name}(${anime.year})【${anime.type}】from xigua`,
+              animeTitle: `${anime.name}(${anime.year}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.img,

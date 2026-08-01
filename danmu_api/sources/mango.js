@@ -466,14 +466,14 @@ export default class MangoSource extends BaseSource {
             const links = [{
               "name": "1",
               "url": fullUrl,
-              "title": `【imgo】 ${episodeTitle}`
+              "title": `imgo | ${episodeTitle}`
             }];
 
             const numericAnimeId = convertToAsciiSum(anime.mediaId);
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || 'N/A'})【${anime.type}】from imgo`,
+              animeTitle: `${anime.title}(${anime.year || 'N/A'})${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,
@@ -503,7 +503,7 @@ export default class MangoSource extends BaseSource {
           links.push({
             "name": String(i + 1),
             "url": fullUrl,
-            "title": `【imgo】 ${episodeTitle}`
+            "title": `imgo | ${episodeTitle}`
           });
         }
 
@@ -512,7 +512,7 @@ export default class MangoSource extends BaseSource {
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || 'N/A'})【${anime.type}】from imgo`,
+              animeTitle: `${anime.title}(${anime.year || 'N/A'}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

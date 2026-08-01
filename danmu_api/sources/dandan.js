@@ -429,7 +429,7 @@ export default class DandanSource extends BaseSource {
             links.push({
               "name": epTitle,
               "url": ep.episodeId.toString(),
-              "title": `【dandan】 ${epTitle}`
+              "title": `dandan | ${epTitle}`
             });
           }
 
@@ -453,7 +453,7 @@ export default class DandanSource extends BaseSource {
             let transformedAnime = {
               animeId: anime.animeId,
               bangumiId: String(anime.animeId),
-              animeTitle: `${displayTitle}(${yearStr})【${resolvedTypeDescription}】from dandan`,
+              animeTitle: `${displayTitle}(${yearStr}) | ${resolvedTypeDescription}`,
               aliases: finalAliases,
               type: resolvedType,
               typeDescription: resolvedTypeDescription,

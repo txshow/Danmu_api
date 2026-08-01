@@ -731,7 +731,7 @@ export default class HanjutvSource extends BaseSource {
 
     if (!url) return null;
 
-    return { name: title, url, title: `【hanjutv】 ${title}` };
+    return { name: title, url, title: `hanjutv | ${title}` };
   }
 
   mergeVariantEpisodes(hxqEpisodes = [], tvEpisodes = []) {
@@ -753,7 +753,7 @@ export default class HanjutvSource extends BaseSource {
     return {
       animeId,
       bangumiId: String(animeId),
-      animeTitle: `${anime.name}(${year})【${category}】from hanjutv`,
+      animeTitle: `${anime.name}(${year}) | ${category}`,
       type: category,
       typeDescription: category,
       imageUrl: anime?.image?.thumb || "",

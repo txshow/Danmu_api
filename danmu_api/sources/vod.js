@@ -206,7 +206,7 @@ export default class VodSource extends BaseSource {
               links.push({
                 "name": count.toString(),
                 "url": epInfo[1],
-                "title": `【${platform}】 ${epInfo[0]}`
+                "title": `${platform} | ${epInfo[0]}`
               });
             }
           }
@@ -215,7 +215,7 @@ export default class VodSource extends BaseSource {
             let transformedAnime = {
               animeId: Number(anime.vod_id),
               bangumiId: String(anime.vod_id),
-              animeTitle: `${anime.vod_name}(${anime.vod_year})【${anime.type_name}】from ${vodName}`,
+              animeTitle: `${anime.vod_name}(${anime.vod_year}) | ${anime.type_name} | ${vodName}`,
               type: anime.type_name,
               typeDescription: anime.type_name,
               imageUrl: anime.vod_pic,

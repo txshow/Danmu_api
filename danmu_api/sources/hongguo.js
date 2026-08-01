@@ -918,14 +918,14 @@ export default class HongguoSource extends BaseSource {
         ? [{
             name: "全集",
             url: createHongguoSeriesId(anime.seriesId),
-            title: "【hongguo】 全集",
+            title: "hongguo | 全集",
           }]
         : episodes.map((episode) => {
             const episodeTitle = `第${episode.index}集${episode.title ? ` ${episode.title}` : ""}`;
             return {
               name: episodeTitle,
               url: createHongguoEpisodeId(anime.seriesId, episode.vid, episode.duration),
-              title: `【hongguo】 ${episodeTitle}`,
+              title: `hongguo | ${episodeTitle}`,
             };
           });
       if (!links.length) continue;
@@ -935,7 +935,7 @@ export default class HongguoSource extends BaseSource {
       const item = {
         animeId: convertToAsciiSum(anime.seriesId),
         bangumiId: String(anime.seriesId),
-        animeTitle: `${anime.name}${year ? `(${year})` : ""}【短剧】from hongguo`,
+        animeTitle: `${anime.name}${year ? `(${year})` : ""} | 短剧`,
         type: "短剧",
         typeDescription: "短剧",
         imageUrl: anime.imageUrl || details.imageUrl || "",

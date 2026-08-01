@@ -424,7 +424,7 @@ export default class BahamutSource extends BaseSource {
             links.push({
               "name": ep.episode.toString(),
               "url": ep.videoSn.toString(),
-              "title": `【bahamut】 ${epTitle}`
+              "title": `bahamut | ${epTitle}`
             });
           }
         }
@@ -474,7 +474,7 @@ export default class BahamutSource extends BaseSource {
           let transformedAnime = {
             animeId: anime.video_sn,
             bangumiId: String(anime.video_sn),
-            animeTitle: `${displayTitle}(${resolvedYear || 'N/A'})【${itemType}】from bahamut`,
+            animeTitle: `${displayTitle}(${resolvedYear || 'N/A'}) | ${itemType}`,
             aliases: aliases,
             type: "动漫",
             typeDescription: "动漫",
