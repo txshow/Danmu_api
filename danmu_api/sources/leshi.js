@@ -543,7 +543,7 @@ export default class LeshiSource extends BaseSource {
             links.push({
               "name": (i + 1).toString(),
               "url": `${ep.url}`,
-              "title": `【leshi】 ${epTitle}`
+              "title": `leshi | ${epTitle}`
             });
           }
 
@@ -553,7 +553,7 @@ export default class LeshiSource extends BaseSource {
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || new Date().getFullYear()})【${anime.type}】from leshi`,
+              animeTitle: `${anime.title}(${anime.year || new Date().getFullYear()}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

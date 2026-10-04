@@ -44,7 +44,7 @@ export default class Kan360Source extends BaseSource {
           links.push({
               "name": episodeInfo.id,
               "url": episodeInfo.url,
-              "title": `【${site}】 ${episodeInfo.name} ${episodeInfo.period}`,
+              "title": `${site} | ${episodeInfo.name} ${episodeInfo.period}`,
               "sort": epNum || episodeInfo.sort || null
           });
         }
@@ -276,7 +276,7 @@ export default class Kan360Source extends BaseSource {
                 links.push({
                   "name": key.toString(),
                   "url": anime.playlinks[key],
-                  "title": `【${key}】 ${anime.titleTxt}(${anime.year})`
+                  "title": `${key} | ${anime.titleTxt}(${anime.year})`
                 });
               }
             }
@@ -315,7 +315,7 @@ export default class Kan360Source extends BaseSource {
                   links.push({
                     "name": (i + 1).toString(),
                     "url": epUrl,
-                    "title": `【${anime.seriesSite}】 第${i + 1}集`
+                    "title": `${anime.seriesSite} | 第${i + 1}集`
                   });
                 }
               }
@@ -331,7 +331,7 @@ export default class Kan360Source extends BaseSource {
                       links.push({
                         name: ep.name,
                         url: ep.url,
-                        title: `【${siteKey}】 第${ep.name}集`,
+                        title: `${siteKey} | 第${ep.name}集`,
                         sort: ep.name
                       });
                     }
@@ -346,7 +346,7 @@ export default class Kan360Source extends BaseSource {
                             links.push({
                               name: ep.name,
                               url: ep.url,
-                              title: `【${siteKey}】 第${ep.name}集`,
+                              title: `${siteKey} | 第${ep.name}集`,
                               sort: ep.name
                             });
                           }
@@ -382,7 +382,7 @@ export default class Kan360Source extends BaseSource {
             let transformedAnime = {
               animeId: Number(anime.id),
               bangumiId: String(anime.id),
-              animeTitle: `${anime.titleTxt}(${anime.year})【${anime.cat_name}】from 360`,
+              animeTitle: `${anime.titleTxt}(${anime.year}) | ${anime.cat_name}`,
               type: anime.cat_name,
               typeDescription: anime.cat_name,
               imageUrl: anime.cover,

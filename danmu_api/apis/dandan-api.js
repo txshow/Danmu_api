@@ -560,12 +560,12 @@ async function searchAnimeBody(url, preferAnimeId = null, preferSource = null, d
         const { source } = resolveSourceAndRealId(singleUrl);
         if (source === 'animeko') {
           const bgmId = singleUrl.match(/(?:bgm\.tv|bangumi\.tv|bangumi\.lol|chii\.in)\/ep\/(\d+)/);
-          titles.push(`【animeko】 BGMEp${bgmId ? bgmId[1] : '?'}`);
+          titles.push(`animeko | BGMEp${bgmId ? bgmId[1] : '?'}`);
         } else if (source === 'bahamut') {
-          titles.push(`【bahamut】 BahaSn${singleUrl.match(/sn=(\d+)/)?.[1] || '?'}`);
+          titles.push(`bahamut | BahaSn${singleUrl.match(/sn=(\d+)/)?.[1] || '?'}`);
         } else {
           const pt = await sourceLogContext.run(getLogNameByKey(source), () => getPageTitle(stripLinkOffset(singleUrl).cleanUrl));
-          titles.push(`【${source}】 ${pt}`);
+          titles.push(`${source} | ${pt}`);
         }
       }
       const mergedTitle = titles.join('＆');
@@ -672,7 +672,7 @@ async function searchAnimeBody(url, preferAnimeId = null, preferSource = null, d
     const links = [{
       "name": "手动解析链接弹幕",
       "url": extractedId,
-      "title": `【${platform}】 ${pageTitle}`
+      "title": `${platform} | ${pageTitle}`
     }];
     curAnimes.push(tmpAnime);
     addAnime(Anime.fromJson({...tmpAnime, links: links}), requestAnimeDetailsMap);

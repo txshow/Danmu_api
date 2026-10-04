@@ -1202,7 +1202,7 @@ export default class RenrenSource extends BaseSource {
               links.push({
                 "name": ep.episodeIndex.toString(),
                 "url": ep.episodeId,
-                "title": `【${ep.provider}】 ${ep.title}`
+                "title": `${ep.provider} | ${ep.title}`
               });
             }
 
@@ -1219,7 +1219,7 @@ export default class RenrenSource extends BaseSource {
               let transformedAnime = {
                 animeId: Number(anime.mediaId),
                 bangumiId: String(anime.mediaId),
-                animeTitle: `${anime.title}(${finalYear})【${finalType}】from renren`,
+                animeTitle: `${anime.title}(${finalYear}) | ${finalType}`,
                 aliases: aliases,
                 type: finalType,
                 typeDescription: finalType,

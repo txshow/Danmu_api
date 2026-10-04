@@ -674,7 +674,7 @@ export default class BilibiliSource extends BaseSource {
                return {
                  name: realVal,
                  url: linkUrl,
-                 title: `【bilibili1】 ${displayTitle.trim()}`,
+                 title: `bilibili1 | ${displayTitle.trim()}`,
                  _id: parseInt(epId, 10) || 0
                };
              });
@@ -704,7 +704,7 @@ export default class BilibiliSource extends BaseSource {
                 return {
                     name: `${index + 1}`,
                     url: linkUrl,
-                    title: `【bilibili1】 ${ep.title}`,
+                    title: `bilibili1 | ${ep.title}`,
                     _id: parseInt(ep.id, 10) || 0
                 };
              });
@@ -723,7 +723,7 @@ export default class BilibiliSource extends BaseSource {
           const transformedAnime = {
             animeId: numericAnimeId,
             bangumiId: anime.mediaId,
-            animeTitle: `${displayTitle}(${anime.year || 'N/A'})【${anime.type}】from bilibili`,
+            animeTitle: `${displayTitle}(${anime.year || 'N/A'}) | ${anime.type}`,
             type: anime.type,
             typeDescription: anime.type,
             imageUrl: anime.imageUrl,

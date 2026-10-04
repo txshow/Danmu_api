@@ -28,14 +28,14 @@ export default class LocalSource extends BaseSource {
       const links = episodes.map(resource => {
         const episode = resource.episode;
         const name = episode !== null ? `第${episode}集` : (type === 'movie' ? '正片' : '全集');
-        return { name, title: `【local】 ${name}`, url: `local:${resource.resourceKey}` };
+        return { name, title: `local | ${name}`, url: `local:${resource.resourceKey}` };
       });
       const animeId = convertToAsciiSum(`local:${group.groupKey}`);
       const title = type === 'movie' && season === 1 ? group.title : seasonTitle(group);
       const anime = {
         animeId,
         bangumiId: String(animeId),
-        animeTitle: `${title}${year ? `(${year})` : ''}【${typeDescription}】from local`,
+        animeTitle: `${title}${year ? `(${year})` : ''} | ${typeDescription}`,
         type: type === 'tv' ? 'tvseries' : type,
         typeDescription,
         imageUrl: '',
