@@ -1,0 +1,76 @@
+name: Daily Sync danmu_api
+permissions:
+  contents: write
+on:
+  schedule:
+    - cron: "20 18 * * *" # UTC 18:20 = 北京时间 05:20
+  workflow_dispatch:
+jobs:
+  sync-and-replace:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: "--no-warnings"
+    steps:
+      - name: Checkout main branch for mirror
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Check if upstream has new commits
+        id: check_upstream
+        run: |
+          git remote add upstream https://github.com/huangxd-/danmu_api.git
+          git fetch upstream
+          # 对比：本地origin/main 与 upstream/main 是否有差异
+          UPSTREAM_DIFF=$(git log origin/main..upstream/main)
+          if [[ -n "$UPSTREAM_DIFF" ]]; then
+            echo "upstream_has_update=true" >> $GITHUB_OUTPUT
+            echo "Detect new commits in upstream"
+          else
+            echo "upstream_has_update=false" >> $GITHUB_OUTPUT
+            echo "Upstream no change, skip sync"
+          fi
+
+      - name: Mirror upstream full git history
+        if: steps.check_upstream.outputs.upstream_has_update == 'true'
+        run: |
+          git config --global core.autocrlf false
+          git reset --hard upstream/main
+          git fetch upstream --tags
+
+      - name: Replace 【】 to |
+        if: steps.check_upstream.outputs.upstream_has_update == 'true'
+        run: |
+          RULE='s/【([^】]+)】from[^`]*/ | \1/g; s/【([^】]+)】 /\1 | /g'
+          process_file() {
+            local f="$1"
+            if sed -n -E "$RULE" "$f" | cmp -s "$f" -; then
+              : # 文件内容无变化，跳过
+            else
+              sed -E "$RULE" "$f" > "$f.tmp"
+              mv "$f.tmp" "$f"
+            fi
+          }
+          [ -d "./danmu_api/apis" ] && find ./danmu_api/apis -maxdepth 1 -type f -name "*.js" -print0 | while IFS= read -r -d '' file; do process_file "$file"; done
+          [ -d "./danmu_api/sources" ] && find ./danmu_api/sources -maxdepth 1 -type f -name "*.js" -print0 | while IFS= read -r -d '' file; do process_file "$file"; done
+
+      - name: Check changes
+        id: git_check
+        if: steps.check_upstream.outputs.upstream_has_update == 'true'
+        run: |
+          CHANGES=$(git diff ./danmu_api/apis ./danmu_api/sources)
+          if [[ -n "$CHANGES" ]]; then
+            echo "has_change=true" >> $GITHUB_OUTPUT
+            git add ./danmu_api/apis ./danmu_api/sources
+          else
+            echo "has_change=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit & Push main
+        if: steps.check_upstream.outputs.upstream_has_update == 'true' && steps.git_check.outputs.has_change == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "$(date +%Y%m%d%H%M)"
+          git push --force-with-lease origin main
