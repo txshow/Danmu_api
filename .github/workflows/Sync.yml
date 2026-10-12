@@ -12,7 +12,7 @@ jobs:
       NODE_OPTIONS: "--no-warnings"
     steps:
       - name: Checkout main branch for mirror
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
@@ -38,7 +38,8 @@ jobs:
           git config --global core.autocrlf false
           git reset --hard upstream/main
           git fetch upstream --tags
-
+          # 删除上游带过来的.github
+          rm -rf .github
       - name: Replace 【】 to |
         if: steps.check_upstream.outputs.upstream_has_update == 'true'
         run: |
@@ -59,10 +60,12 @@ jobs:
         id: git_check
         if: steps.check_upstream.outputs.upstream_has_update == 'true'
         run: |
-          CHANGES=$(git diff ./danmu_api/apis ./danmu_api/sources)
+          CHANGES=$(git diff)
           if [[ -n "$CHANGES" ]]; then
             echo "has_change=true" >> $GITHUB_OUTPUT
-            git add ./danmu_api/apis ./danmu_api/sources
+            git add .
+            # 输出待提交文件调试
+            git diff --cached --name-only
           else
             echo "has_change=false" >> $GITHUB_OUTPUT
           fi
