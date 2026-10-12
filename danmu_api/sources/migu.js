@@ -228,7 +228,7 @@ class MiguSource extends BaseSource {
             links.push({
               "name": ep.name,
               "url": `https://webapi.miguvideo.com/gateway/live_barrage/videox/barrage/v2/list/${anime.epsId ?? ep.pID}/${ep.pID}`,
-              "title": `【migu】 ${ep.name}`
+              "title": `migu | ${ep.name}`
             });
           }
 
@@ -236,7 +236,7 @@ class MiguSource extends BaseSource {
             let transformedAnime = {
               animeId: convertToAsciiSum(anime.epsId ?? eps[0]?.pID),
               bangumiId: String(anime.epsId ?? eps[0]?.pID),
-              animeTitle: `${anime.name || anime.title}(${anime.year})【${anime.type}】from migu`,
+              animeTitle: `${anime.name || anime.title}(${anime.year}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.img ?? anime.imageUrl,
