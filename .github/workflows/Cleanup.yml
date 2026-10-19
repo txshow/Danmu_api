@@ -1,0 +1,38 @@
+name: Cleanup
+
+on:
+    workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      - name: 🗑 Delete deployment
+        uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: Production
+          onlyRemoveDeployments: true
+
+  prepare:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+
+    - name: Clean
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout --orphan latest_branch
+        git add -A
+        git commit -am "fast commit"
+        git branch -D sync
+        git branch -m sync
+
+    - name: Push
+      run: git push -f origin sync
