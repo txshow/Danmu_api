@@ -339,7 +339,7 @@ export default class SohuSource extends BaseSource {
             links.push({
               "name": (i + 1).toString(),
               "url": `${ep.url}`,
-              "title": `【sohu】 ${epTitle}`
+              "title": `sohu | ${epTitle}`
             });
           }
 
@@ -349,7 +349,7 @@ export default class SohuSource extends BaseSource {
             let transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || new Date().getFullYear()})【${anime.type}】from sohu`,
+              animeTitle: `${anime.title}(${anime.year || new Date().getFullYear()}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

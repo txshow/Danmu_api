@@ -827,7 +827,7 @@ export default class IqiyiSource extends BaseSource {
             links.push({
               "name": ep.order.toString(),
               "url": fullUrl,
-              "title": `【qiyi】 ${this._ensureEpisodeNumber(ep.title, anime.title, ep.order)}`
+              "title": `qiyi | ${this._ensureEpisodeNumber(ep.title, anime.title, ep.order)}`
             });
           }
 
@@ -836,7 +836,7 @@ export default class IqiyiSource extends BaseSource {
             const transformedAnime = {
               animeId: numericAnimeId,
               bangumiId: anime.mediaId,
-              animeTitle: `${anime.title}(${anime.year || 'N/A'})【${anime.type}】from iqiyi`,
+              animeTitle: `${anime.title}(${anime.year || 'N/A'}) | ${anime.type}`,
               type: anime.type,
               typeDescription: anime.type,
               imageUrl: anime.imageUrl,

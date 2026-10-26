@@ -830,7 +830,7 @@ export default class AnimekoSource extends BaseSource {
               links.push({
                 "name": `${epNum}`,
                 "url": ep.id.toString(),
-                "title": `【animeko】 ${fullTitle}`
+                "title": `animeko | ${fullTitle}`
               });
             }
           }
@@ -841,7 +841,7 @@ export default class AnimekoSource extends BaseSource {
             let transformedAnime = {
               animeId: anime.id,
               bangumiId: String(anime.id),
-              animeTitle: `${anime.name_cn || anime.name}(${yearStr})【${anime.typeDescription || '动漫'}】from animeko`,
+              animeTitle: `${anime.name_cn || anime.name}(${yearStr}) | ${anime.typeDescription || '动漫'}`,
               aliases: anime.aliases || [],
               type: "动漫",
               typeDescription: anime.typeDescription || "动漫",
